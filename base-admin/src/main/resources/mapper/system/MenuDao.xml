@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="top.hjlinfo.base.admin.modules.system.dao.MenuDao">
+    <select id="findIdByRoleId" resultType="java.lang.Long">
+        select menu_id from sys_roles_menus where role_id = #{roleId};
+    </select>
+</mapper>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="top.hjlinfo.base.admin.modules.system.dao.PermissionDao">
+
+    <select id="findNameByRoleId" resultType="java.lang.String">
+        select p.name from sys_permission p right join sys_roles_permissions rp on rp.permission_id = p.id
+        where rp.role_id in
+        <foreach collection="roleIds" item="id" index="index" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </select>
+    <select id="findIdsByRoleId" resultType="java.lang.Long">
+        select permission_id from sys_roles_permissions where role_id = #{roleId};
+    </select>
+</mapper>

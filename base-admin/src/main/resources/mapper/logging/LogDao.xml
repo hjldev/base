@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="top.hjlinfo.base.admin.modules.logging.dao.LogDao">
+    <select id="findIp" resultType="java.lang.Long">
+        select count(*) FROM (select request_ip FROM sys_log where create_time between #{date1} and #{date2} GROUP BY request_ip) as s
+    </select>
+    <select id="findExceptionById" resultType="java.lang.String">
+        select exception_detail FROM sys_log where id = #{id}
+    </select>
+</mapper>
