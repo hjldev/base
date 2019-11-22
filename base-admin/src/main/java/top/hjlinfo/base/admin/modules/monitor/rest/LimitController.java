@@ -12,7 +12,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * 接口限流测试类
  */
 @RestController
-@RequestMapping("api")
+@RequestMapping("/test")
 public class LimitController {
     private static final AtomicInteger ATOMIC_INTEGER = new AtomicInteger();
 

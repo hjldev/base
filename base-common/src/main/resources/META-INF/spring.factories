@@ -3,4 +3,5 @@ org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
   top.hjlinfo.base.common.swagger2.SwaggerConfig,\
   top.hjlinfo.base.common.swagger2.SwaggerDataConfig,\
   top.hjlinfo.base.common.utils.SpringContextHolder,\
-  top.hjlinfo.base.common.exception.handler.GlobalExceptionHandler
+  top.hjlinfo.base.common.exception.handler.GlobalExceptionHandler,\
+  top.hjlinfo.base.common.aspect.LimitAspect
