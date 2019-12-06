@@ -12,8 +12,7 @@ import top.hjlinfo.base.admin.modules.system.service.UserService;
 import top.hjlinfo.base.admin.modules.system.service.dto.MenuDTO;
 import top.hjlinfo.base.admin.modules.system.service.dto.UserDTO;
 import top.hjlinfo.base.admin.modules.system.service.mapper.MenuMapper;
-import top.hjlinfo.base.common.utils.SecurityUtils;
-import org.springframework.beans.factory.annotation.Autowired;
+import top.hjlinfo.base.common.utils.SecurityUtil;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -47,7 +46,7 @@ public class MenuController {
      */
     @GetMapping(value = "/menus/build")
     public ResponseEntity buildMenus(){
-        UserDTO user = userService.findByName(SecurityUtils.getUsername());
+        UserDTO user = userService.findByName(SecurityUtil.getUsername());
         List<MenuDTO> menuDTOList = menuService.findByRoles(roleService.findByUsers_Id(user.getId()));
         List<MenuDTO> menuDTOTree = (List<MenuDTO>) menuService.buildTree(menuDTOList).get("content");
         return new ResponseEntity<>(menuService.buildMenus(menuDTOTree),HttpStatus.OK);

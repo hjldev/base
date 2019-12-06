@@ -6,7 +6,7 @@ import top.hjlinfo.base.admin.modules.system.service.RoleService;
 import top.hjlinfo.base.admin.modules.system.service.UserService;
 import top.hjlinfo.base.admin.modules.system.service.dto.RoleSmallDTO;
 import top.hjlinfo.base.admin.modules.system.service.dto.UserDTO;
-import top.hjlinfo.base.common.utils.SecurityUtils;
+import top.hjlinfo.base.common.utils.SecurityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -36,7 +36,7 @@ public class DataScope {
 
     public Set<Long> getDeptIds() {
 
-        UserDTO user = userService.findByName(SecurityUtils.getUsername());
+        UserDTO user = userService.findByName(SecurityUtil.getUsername());
 
         // 用于存储部门id
         Set<Long> deptIds = new HashSet<>();

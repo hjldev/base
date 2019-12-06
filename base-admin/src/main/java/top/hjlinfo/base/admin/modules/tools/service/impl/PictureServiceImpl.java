@@ -18,7 +18,7 @@ import top.hjlinfo.base.admin.modules.tools.domain.Picture;
 import top.hjlinfo.base.admin.modules.tools.service.PictureService;
 import top.hjlinfo.base.admin.modules.tools.service.dto.PictureQueryCriteria;
 import top.hjlinfo.base.common.exception.BadRequestException;
-import top.hjlinfo.base.common.utils.ElAdminConstant;
+import top.hjlinfo.base.common.utils.BaseConstant;
 import top.hjlinfo.base.common.utils.FileUtil;
 import top.hjlinfo.base.common.utils.PageUtil;
 import top.hjlinfo.base.common.utils.QueryHelp;
@@ -59,7 +59,7 @@ public class PictureServiceImpl implements PictureService {
         HashMap<String, Object> paramMap = new HashMap<>();
 
         paramMap.put("smfile", file);
-        String result= HttpUtil.post(ElAdminConstant.Url.SM_MS_URL, paramMap);
+        String result= HttpUtil.post(BaseConstant.Url.SM_MS_URL, paramMap);
 
         JSONObject jsonObject = JSONUtil.parseObj(result);
         Picture picture = null;

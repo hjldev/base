@@ -1,13 +1,7 @@
 package top.hjlinfo.base.admin.modules.security.rest;
 
+import cn.hutool.crypto.digest.DigestUtil;
 import lombok.extern.slf4j.Slf4j;
-import top.hjlinfo.base.admin.modules.logging.aop.log.Log;
-import top.hjlinfo.base.admin.modules.security.domain.AuthenticationInfo;
-import top.hjlinfo.base.admin.modules.security.domain.AuthorizationUser;
-import top.hjlinfo.base.admin.modules.security.domain.JwtUser;
-import top.hjlinfo.base.admin.modules.security.utils.JwtTokenUtil;
-import top.hjlinfo.base.common.utils.EncryptUtils;
-import top.hjlinfo.base.common.utils.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,6 +10,12 @@ import org.springframework.security.authentication.AccountExpiredException;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import top.hjlinfo.base.admin.modules.logging.aop.log.Log;
+import top.hjlinfo.base.admin.modules.security.domain.AuthenticationInfo;
+import top.hjlinfo.base.admin.modules.security.domain.AuthorizationUser;
+import top.hjlinfo.base.admin.modules.security.domain.JwtUser;
+import top.hjlinfo.base.admin.modules.security.utils.JwtTokenUtil;
+import top.hjlinfo.base.common.utils.SecurityUtil;
 
 /**
  * @author sting
@@ -48,7 +48,7 @@ public class AuthenticationController {
 
         final JwtUser jwtUser = (JwtUser) userDetailsService.loadUserByUsername(authorizationUser.getUsername());
 
-        if(!jwtUser.getPassword().equals(EncryptUtils.encryptPassword(authorizationUser.getPassword()))){
+        if(!jwtUser.getPassword().equals(DigestUtil.md5Hex(authorizationUser.getPassword()))){
             throw new AccountExpiredException("密码错误");
         }
 
@@ -69,7 +69,7 @@ public class AuthenticationController {
      */
     @GetMapping(value = "${jwt.auth.account}")
     public ResponseEntity getUserInfo(){
-        JwtUser jwtUser = (JwtUser)userDetailsService.loadUserByUsername(SecurityUtils.getUsername());
+        JwtUser jwtUser = (JwtUser)userDetailsService.loadUserByUsername(SecurityUtil.getUsername());
         return ResponseEntity.ok(jwtUser);
     }
 }

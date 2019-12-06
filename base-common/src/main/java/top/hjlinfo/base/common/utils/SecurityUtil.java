@@ -10,7 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
  * @author sting
  * @date 2019-01-17
  */
-public class SecurityUtils {
+public class SecurityUtil {
 
     public static UserDetails getUserDetails() {
         UserDetails userDetails = null;

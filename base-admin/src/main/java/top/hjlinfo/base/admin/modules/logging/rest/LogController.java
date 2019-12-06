@@ -1,11 +1,9 @@
 package top.hjlinfo.base.admin.modules.logging.rest;
 
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import top.hjlinfo.base.admin.modules.logging.service.LogService;
 import top.hjlinfo.base.admin.modules.logging.service.dto.LogQueryCriteria;
-import top.hjlinfo.base.common.utils.SecurityUtils;
-import org.springframework.beans.factory.annotation.Autowired;
+import top.hjlinfo.base.common.utils.SecurityUtil;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,7 +34,7 @@ public class LogController {
     @GetMapping(value = "/logs/user")
     public ResponseEntity getUserLogs(LogQueryCriteria criteria, Pageable pageable){
         criteria.setLogType("INFO");
-        criteria.setUsername(SecurityUtils.getUsername());
+        criteria.setUsername(SecurityUtil.getUsername());
         return new ResponseEntity(logService.queryAll(criteria,pageable), HttpStatus.OK);
     }
 

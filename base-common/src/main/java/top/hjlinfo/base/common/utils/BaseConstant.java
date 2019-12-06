@@ -5,7 +5,7 @@ package top.hjlinfo.base.common.utils;
  * @author sting
  * @date 2018-12-26
  */
-public class ElAdminConstant {
+public class BaseConstant {
 
     public static final String RESET_PASS = "重置密码";
 

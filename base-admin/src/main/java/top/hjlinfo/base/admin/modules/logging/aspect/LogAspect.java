@@ -4,8 +4,8 @@ import lombok.extern.slf4j.Slf4j;
 import top.hjlinfo.base.admin.modules.logging.domain.SysLog;
 import top.hjlinfo.base.admin.modules.logging.service.LogService;
 import top.hjlinfo.base.common.utils.RequestHolder;
-import top.hjlinfo.base.common.utils.SecurityUtils;
-import top.hjlinfo.base.common.utils.StringUtils;
+import top.hjlinfo.base.common.utils.SecurityUtil;
+import top.hjlinfo.base.common.utils.StringUtil;
 import top.hjlinfo.base.common.utils.ThrowableUtil;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -49,7 +49,7 @@ public class LogAspect {
         currentTime = System.currentTimeMillis();
         result = joinPoint.proceed();
         SysLog log = new SysLog("INFO",System.currentTimeMillis() - currentTime);
-        logService.save(getUsername(), StringUtils.getIP(RequestHolder.getHttpServletRequest()),joinPoint, log);
+        logService.save(getUsername(), StringUtil.getIP(RequestHolder.getHttpServletRequest()),joinPoint, log);
         return result;
     }
 
@@ -63,12 +63,12 @@ public class LogAspect {
     public void logAfterThrowing(JoinPoint joinPoint, Throwable e) {
         SysLog log = new SysLog("ERROR",System.currentTimeMillis() - currentTime);
         log.setExceptionDetail(ThrowableUtil.getStackTrace(e));
-        logService.save(getUsername(), StringUtils.getIP(RequestHolder.getHttpServletRequest()), (ProceedingJoinPoint)joinPoint, log);
+        logService.save(getUsername(), StringUtil.getIP(RequestHolder.getHttpServletRequest()), (ProceedingJoinPoint)joinPoint, log);
     }
 
     public String getUsername() {
         try {
-            return SecurityUtils.getUsername();
+            return SecurityUtil.getUsername();
         }catch (Exception e){
             return "";
         }

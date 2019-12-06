@@ -2,7 +2,6 @@ package top.hjlinfo.base.admin.modules.system.rest;
 
 import cn.hutool.core.lang.Dict;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -17,7 +16,7 @@ import top.hjlinfo.base.admin.modules.system.service.RoleService;
 import top.hjlinfo.base.admin.modules.system.service.dto.CommonQueryCriteria;
 import top.hjlinfo.base.admin.modules.system.service.dto.RoleSmallDTO;
 import top.hjlinfo.base.common.exception.BadRequestException;
-import top.hjlinfo.base.common.utils.SecurityUtils;
+import top.hjlinfo.base.common.utils.SecurityUtil;
 
 import java.util.Collections;
 import java.util.List;
@@ -66,7 +65,7 @@ public class RoleController {
 
     @GetMapping(value = "/roles/level")
     public ResponseEntity getLevel(){
-        List<Integer> levels = roleService.findByUsers_Id(SecurityUtils.getUserId()).stream().map(RoleSmallDTO::getLevel).collect(Collectors.toList());
+        List<Integer> levels = roleService.findByUsers_Id(SecurityUtil.getUserId()).stream().map(RoleSmallDTO::getLevel).collect(Collectors.toList());
         return new ResponseEntity<>(Dict.create().set("level", Collections.min(levels)),HttpStatus.OK);
     }
 

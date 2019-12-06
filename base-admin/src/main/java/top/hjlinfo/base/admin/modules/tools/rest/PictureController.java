@@ -11,7 +11,7 @@ import top.hjlinfo.base.admin.modules.logging.aop.log.Log;
 import top.hjlinfo.base.admin.modules.tools.domain.Picture;
 import top.hjlinfo.base.admin.modules.tools.service.PictureService;
 import top.hjlinfo.base.admin.modules.tools.service.dto.PictureQueryCriteria;
-import top.hjlinfo.base.common.utils.SecurityUtils;
+import top.hjlinfo.base.common.utils.SecurityUtil;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -44,7 +44,7 @@ public class PictureController {
     @PreAuthorize("hasAnyRole('ADMIN','PICTURE_ALL','PICTURE_UPLOAD')")
     @PostMapping(value = "/pictures")
     public ResponseEntity upload(@RequestParam MultipartFile file){
-        String userName = SecurityUtils.getUsername();
+        String userName = SecurityUtil.getUsername();
         Picture picture = pictureService.upload(file,userName);
         Map map = new HashMap();
         map.put("errno",0);

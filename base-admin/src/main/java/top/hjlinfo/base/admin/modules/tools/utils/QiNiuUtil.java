@@ -1,7 +1,7 @@
 package top.hjlinfo.base.admin.modules.tools.utils;
 
-import com.qiniu.common.Zone;
 import com.qiniu.storage.Configuration;
+import com.qiniu.storage.Region;
 import top.hjlinfo.base.common.utils.FileUtil;
 
 import java.text.SimpleDateFormat;
@@ -9,6 +9,7 @@ import java.util.Date;
 
 /**
  * 七牛云存储工具类
+ *
  * @author sting
  * @date 2018-12-31
  */
@@ -24,32 +25,32 @@ public class QiNiuUtil {
 
     /**
      * 得到机房的对应关系
+     *
      * @param zone
      * @return
      */
-    public static Configuration getConfiguration(String zone){
-
-        if(HUAD.equals(zone)){
-            return new Configuration(Zone.zone0());
-        } else if(HUAB.equals(zone)){
-            return new Configuration(Zone.zone1());
-        } else if(HUAN.equals(zone)){
-            return new Configuration(Zone.zone2());
-        } else if (BEIM.equals(zone)){
-            return new Configuration(Zone.zoneNa0());
-
+    public static Configuration getConfiguration(String zone) {
+        if (HUAD.equals(zone)) {
+            return new Configuration(Region.region0());
+        } else if (HUAB.equals(zone)) {
+            return new Configuration(Region.region1());
+        } else if (HUAN.equals(zone)) {
+            return new Configuration(Region.region2());
+        } else if (BEIM.equals(zone)) {
+            return new Configuration(Region.regionNa0());
             // 否则就是东南亚
         } else {
-            return new Configuration(Zone.zoneAs0());
+            return new Configuration(Region.regionAs0());
         }
     }
 
     /**
      * 默认不指定key的情况下，以文件内容的hash值作为文件名
+     *
      * @param file
      * @return
      */
-    public static String getKey(String file){
+    public static String getKey(String file) {
         StringBuffer key = new StringBuffer(FileUtil.getFileNameNoEx(file));
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
         Date date = new Date();

@@ -7,7 +7,7 @@ import org.springframework.util.ObjectUtils;
 import top.hjlinfo.base.admin.modules.generator.domain.GenConfig;
 import top.hjlinfo.base.admin.modules.generator.domain.vo.ColumnInfo;
 import top.hjlinfo.base.common.utils.FileUtil;
-import top.hjlinfo.base.common.utils.StringUtils;
+import top.hjlinfo.base.common.utils.StringUtil;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -78,13 +78,13 @@ public class GenUtil {
         map.put("author",genConfig.getAuthor());
         map.put("date", LocalDate.now().toString());
         map.put("tableName",tableName);
-        String className = StringUtils.toCapitalizeCamelCase(tableName);
-        String changeClassName = StringUtils.toCamelCase(tableName);
+        String className = StringUtil.toCapitalizeCamelCase(tableName);
+        String changeClassName = StrUtil.toCamelCase(tableName);
 
         // 判断是否去除表前缀
-        if (StringUtils.isNotEmpty(genConfig.getPrefix())) {
-            className = StringUtils.toCapitalizeCamelCase(StrUtil.removePrefix(tableName,genConfig.getPrefix()));
-            changeClassName = StringUtils.toCamelCase(StrUtil.removePrefix(tableName,genConfig.getPrefix()));
+        if (StrUtil.isNotEmpty(genConfig.getPrefix())) {
+            className = StringUtil.toCapitalizeCamelCase(StrUtil.removePrefix(tableName,genConfig.getPrefix()));
+            changeClassName = StrUtil.toCamelCase(StrUtil.removePrefix(tableName,genConfig.getPrefix()));
         }
         map.put("className", className);
         map.put("upperCaseClassName", className.toUpperCase());
@@ -102,8 +102,8 @@ public class GenUtil {
             listMap.put("columnKey",column.getColumnKey());
 
             String colType = ColUtil.cloToJava(column.getColumnType().toString());
-            String changeColumnName = StringUtils.toCamelCase(column.getColumnName().toString());
-            String capitalColumnName = StringUtils.toCapitalizeCamelCase(column.getColumnName().toString());
+            String changeColumnName = StrUtil.toCamelCase(column.getColumnName().toString());
+            String capitalColumnName = StringUtil.toCapitalizeCamelCase(column.getColumnName().toString());
             if(PK.equals(column.getColumnKey())){
                 map.put("pkColumnType",colType);
                 map.put("pkChangeColName",changeColumnName);
@@ -125,7 +125,7 @@ public class GenUtil {
             listMap.put("changeColumnName",changeColumnName);
             listMap.put("capitalColumnName",capitalColumnName);
 
-            if(!StringUtils.isBlank(column.getColumnQuery())){
+            if(!StrUtil.isBlank(column.getColumnQuery())){
                 listMap.put("columnQuery",column.getColumnQuery());
                 map.put("hasQuery",true);
                 queryColumns.add(listMap);

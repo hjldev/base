@@ -1,5 +1,6 @@
 package top.hjlinfo.base.common.aspect;
 
+import cn.hutool.core.util.StrUtil;
 import com.google.common.collect.ImmutableList;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -16,7 +17,7 @@ import org.springframework.stereotype.Component;
 import top.hjlinfo.base.common.annotation.Limit;
 import top.hjlinfo.base.common.exception.BadRequestException;
 import top.hjlinfo.base.common.utils.RequestHolder;
-import top.hjlinfo.base.common.utils.StringUtils;
+import top.hjlinfo.base.common.utils.StringUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
@@ -42,17 +43,17 @@ public class LimitAspect {
         LimitType limitType = limit.limitType();
         String name = limit.name();
         String key = limit.key();
-        if (StringUtils.isEmpty(key)) {
+        if (StrUtil.isEmpty(key)) {
             switch (limitType) {
                 case IP:
-                    key = StringUtils.getIP(request);
+                    key = StringUtil.getIP(request);
                     break;
                 default:
                     key = signatureMethod.getName();
             }
         }
 
-        ImmutableList keys = ImmutableList.of(StringUtils.join(limit.prefix(), "_", key, "_", request.getRequestURI().replaceAll("/","_")));
+        ImmutableList keys = ImmutableList.of(StrUtil.join(limit.prefix(), "_", key, "_", request.getRequestURI().replaceAll("/","_")));
 
         String luaScript = buildLuaScript();
         RedisScript<Number> redisScript = new DefaultRedisScript<>(luaScript, Number.class);
