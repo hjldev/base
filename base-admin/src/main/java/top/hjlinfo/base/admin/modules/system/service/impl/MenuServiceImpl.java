@@ -132,25 +132,27 @@ public class MenuServiceImpl implements MenuService {
 
     @Override
     public Map buildTree(List<MenuDTO> menuDTOS) {
-        List<MenuDTO> trees = new ArrayList<MenuDTO>();
-
+        List<MenuDTO> trees = new ArrayList<>();
+        Set<Long> ids = new HashSet<>();
         for (MenuDTO menuDTO : menuDTOS) {
-
-            if ("0".equals(menuDTO.getPid().toString())) {
+            if (menuDTO.getPid() == 0) {
                 trees.add(menuDTO);
             }
-
             for (MenuDTO it : menuDTOS) {
                 if (it.getPid().equals(menuDTO.getId())) {
                     if (menuDTO.getChildren() == null) {
-                        menuDTO.setChildren(new ArrayList<MenuDTO>());
+                        menuDTO.setChildren(new ArrayList<>());
                     }
                     menuDTO.getChildren().add(it);
+                    ids.add(it.getId());
                 }
             }
         }
-        Map map = new HashMap();
-        map.put("content",trees.size() == 0?menuDTOS:trees);
+        Map<String, Object> map = new HashMap<>();
+        if(trees.size() == 0){
+            trees = menuDTOS.stream().filter(s -> !ids.contains(s.getId())).collect(Collectors.toList());
+        }
+        map.put("content",trees);
         map.put("totalElements",menuDTOS!=null?menuDTOS.size():0);
         return map;
     }
