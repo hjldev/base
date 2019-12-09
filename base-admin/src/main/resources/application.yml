@@ -2,6 +2,8 @@ server:
   port: 8001
 
 spring:
+  freemarker:
+    check-template-location: false
   application:
     name: admin
   profiles:
