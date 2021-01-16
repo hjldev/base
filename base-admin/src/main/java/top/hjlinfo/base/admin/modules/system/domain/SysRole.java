@@ -5,7 +5,6 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
-import javax.persistence.Column;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.Date;
@@ -34,7 +33,6 @@ public class SysRole implements Serializable {
     // 数值越小，级别越大
     private Integer level = 3;
 
-    @Column
     private String remark;
 
     @TableField(exist = false)

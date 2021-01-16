@@ -1,11 +1,11 @@
 package top.hjlinfo.base.admin.modules.logging.domain;
 
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -18,7 +18,7 @@ import java.util.Date;
 @NoArgsConstructor
 public class SysLog implements Serializable {
 
-    @Id
+    @TableId
     private Long id;
 
     /**

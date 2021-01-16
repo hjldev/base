@@ -21,7 +21,7 @@ public class ConfigurerAdapter implements WebMvcConfigurer {
         registry.addMapping("/**")
                 .allowCredentials(true)
                 .allowedHeaders("*")
-                .allowedOrigins("*")
+                .allowedOriginPatterns("*")
                 .allowedMethods("GET","POST","PUT","DELETE");
 
     }

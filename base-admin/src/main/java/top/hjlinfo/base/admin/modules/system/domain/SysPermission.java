@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
-import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
@@ -15,7 +14,6 @@ import java.util.Date;
  * @date 2018-12-03
  */
 @Data
-@Table(name = "sys_permission")
 public class SysPermission implements Serializable{
 
 	@TableId

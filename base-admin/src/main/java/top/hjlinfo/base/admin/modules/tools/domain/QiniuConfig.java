@@ -2,12 +2,9 @@ package top.hjlinfo.base.admin.modules.tools.domain;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
@@ -17,7 +14,7 @@ import java.io.Serializable;
  * @date 2018-12-31
  */
 @Data
-@Table(name = "qiniu_config")
+@TableName(value = "qiniu_config")
 public class QiniuConfig implements Serializable {
 
     @TableId

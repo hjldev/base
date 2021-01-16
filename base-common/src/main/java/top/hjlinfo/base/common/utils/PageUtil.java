@@ -27,7 +27,7 @@ public class PageUtil extends cn.hutool.core.util.PageUtil {
         int toIndex = page * size + size;
 
         if(fromIndex > list.size()){
-            return new ArrayList();
+            return new ArrayList<>();
         } else if(toIndex >= list.size()) {
             return list.subList(fromIndex,list.size());
         } else {
@@ -40,8 +40,8 @@ public class PageUtil extends cn.hutool.core.util.PageUtil {
      * @param page
      * @return
      */
-    public static Map toPage(Page page) {
-        Map map = new HashMap();
+    public static Map<String, Object> toPage(Page page) {
+        Map<String, Object> map = new HashMap<>();
 
         map.put("content",page.getContent());
         map.put("totalElements",page.getTotalElements());
@@ -49,8 +49,8 @@ public class PageUtil extends cn.hutool.core.util.PageUtil {
         return map;
     }
 
-    public static Map toPage(IPage page) {
-        Map map = new HashMap();
+    public static Map<String, Object> toPage(IPage page) {
+        Map<String, Object> map = new HashMap<>();
 
         map.put("content",page.getRecords());
         map.put("totalElements",page.getTotal());
@@ -63,8 +63,8 @@ public class PageUtil extends cn.hutool.core.util.PageUtil {
      * @param totalElements
      * @return
      */
-    public static Map toPage(Object object, Object totalElements) {
-        Map map = new HashMap();
+    public static Map<String, Object> toPage(Object object, Object totalElements) {
+        Map<String, Object> map = new HashMap<>();
 
         map.put("content",object);
         map.put("totalElements",totalElements);

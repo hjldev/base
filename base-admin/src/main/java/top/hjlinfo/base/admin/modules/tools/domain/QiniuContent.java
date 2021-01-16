@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
-import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -14,7 +13,6 @@ import java.util.Date;
  * @date 2018-12-31
  */
 @Data
-@Table(name = "qiniu_content")
 public class QiniuContent implements Serializable {
 
     @TableId

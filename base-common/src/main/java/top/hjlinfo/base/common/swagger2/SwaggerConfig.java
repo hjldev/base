@@ -16,6 +16,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.google.common.base.Predicate;
 
 /**
  * api页面 /swagger-ui.html
@@ -44,11 +45,11 @@ public class SwaggerConfig {
                 .required(true)
                 .build();
         pars.add(ticketPar.build());
+
         return new Docket(DocumentationType.SWAGGER_2)
                 .enable(enabled)
                 .apiInfo(apiInfo())
                 .select()
-                .paths(Predicates.not(PathSelectors.regex("/error.*")))
                 .build()
                 .globalOperationParameters(pars);
     }
