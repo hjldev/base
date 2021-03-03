@@ -1,4 +1,4 @@
-package top.hjlinfo.base.admin.modules.generator.rest;
+package top.hjlinfo.base.admin.modules.generator.controller;
 
 import cn.hutool.core.util.PageUtil;
 import lombok.RequiredArgsConstructor;
@@ -6,7 +6,6 @@ import top.hjlinfo.base.admin.modules.generator.domain.vo.ColumnInfo;
 import top.hjlinfo.base.common.exception.BadRequestException;
 import top.hjlinfo.base.admin.modules.generator.service.GenConfigService;
 import top.hjlinfo.base.admin.modules.generator.service.GeneratorService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

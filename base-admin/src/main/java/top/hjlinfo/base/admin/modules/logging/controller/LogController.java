@@ -1,4 +1,4 @@
-package top.hjlinfo.base.admin.modules.logging.rest;
+package top.hjlinfo.base.admin.modules.logging.controller;
 
 import lombok.RequiredArgsConstructor;
 import top.hjlinfo.base.admin.modules.logging.service.LogService;

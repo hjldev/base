@@ -1,6 +1,5 @@
 package top.hjlinfo.base.admin.modules.logging.service.impl;
 
-import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.lang.Dict;
 import cn.hutool.json.JSONObject;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -9,13 +8,12 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.AllArgsConstructor;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.reflect.MethodSignature;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import top.hjlinfo.base.admin.modules.logging.aop.log.Log;
+import top.hjlinfo.base.common.annotation.Log;
 import top.hjlinfo.base.admin.modules.logging.dao.LogDao;
 import top.hjlinfo.base.admin.modules.logging.domain.SysLog;
 import top.hjlinfo.base.admin.modules.logging.service.LogService;
@@ -26,9 +24,7 @@ import top.hjlinfo.base.common.utils.PageUtil;
 import top.hjlinfo.base.common.utils.QueryHelp;
 
 import java.lang.reflect.Method;
-import java.sql.Timestamp;
 import java.util.Date;
-import java.util.Iterator;
 
 /**
  * @author sting

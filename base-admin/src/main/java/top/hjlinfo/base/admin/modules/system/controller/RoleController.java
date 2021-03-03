@@ -1,4 +1,4 @@
-package top.hjlinfo.base.admin.modules.system.rest;
+package top.hjlinfo.base.admin.modules.system.controller;
 
 import cn.hutool.core.lang.Dict;
 import lombok.AllArgsConstructor;
@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import top.hjlinfo.base.admin.modules.logging.aop.log.Log;
+import top.hjlinfo.base.common.annotation.Log;
 import top.hjlinfo.base.admin.modules.system.domain.SysRole;
 import top.hjlinfo.base.admin.modules.system.service.RoleService;
 import top.hjlinfo.base.admin.modules.system.service.dto.CommonQueryCriteria;

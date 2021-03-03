@@ -1,7 +1,7 @@
-package top.hjlinfo.base.admin.modules.system.rest;
+package top.hjlinfo.base.admin.modules.system.controller;
 
 import lombok.AllArgsConstructor;
-import top.hjlinfo.base.admin.modules.logging.aop.log.Log;
+import top.hjlinfo.base.common.annotation.Log;
 import top.hjlinfo.base.admin.modules.system.service.dto.CommonQueryCriteria;
 import top.hjlinfo.base.admin.modules.system.service.dto.RoleSmallDTO;
 import top.hjlinfo.base.common.exception.BadRequestException;

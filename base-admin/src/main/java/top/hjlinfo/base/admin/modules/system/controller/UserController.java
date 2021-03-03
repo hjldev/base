@@ -1,7 +1,7 @@
-package top.hjlinfo.base.admin.modules.system.rest;
+package top.hjlinfo.base.admin.modules.system.controller;
 
 import cn.hutool.crypto.digest.DigestUtil;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +13,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import top.hjlinfo.base.admin.config.DataScope;
-import top.hjlinfo.base.admin.modules.logging.aop.log.Log;
+import top.hjlinfo.base.common.annotation.Log;
 import top.hjlinfo.base.admin.modules.system.domain.SysUser;
 import top.hjlinfo.base.admin.modules.system.service.DeptService;
 import top.hjlinfo.base.admin.modules.system.service.RoleService;
@@ -35,7 +35,7 @@ import java.util.stream.Collectors;
  */
 @RestController
 @RequestMapping("api")
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class UserController {
 
     private final UserService userService;

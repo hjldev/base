@@ -1,14 +1,14 @@
-package top.hjlinfo.base.admin.modules.tools.rest;
+package top.hjlinfo.base.admin.modules.tools.controller;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import top.hjlinfo.base.admin.modules.logging.aop.log.Log;
+import top.hjlinfo.base.common.annotation.Log;
 import top.hjlinfo.base.admin.modules.tools.domain.QiniuConfig;
 import top.hjlinfo.base.admin.modules.tools.domain.QiniuContent;
 import top.hjlinfo.base.admin.modules.tools.service.QiNiuService;
@@ -22,13 +22,13 @@ import java.util.Map;
  * @author 郑杰
  * @date 2018/09/28 6:55:53
  */
+@RequiredArgsConstructor
 @Slf4j
 @RestController
 @RequestMapping("api")
 public class QiniuController {
 
-    @Autowired
-    private QiNiuService qiNiuService;
+    private final QiNiuService qiNiuService;
 
     @GetMapping(value = "/qiNiuConfig")
     public ResponseEntity get(){
@@ -57,7 +57,7 @@ public class QiniuController {
     @PostMapping(value = "/qiNiuContent")
     public ResponseEntity upload(@RequestParam MultipartFile file){
         QiniuContent qiniuContent = qiNiuService.upload(file,qiNiuService.find());
-        Map map = new HashMap();
+        Map<String, Object> map = new HashMap<>();
         map.put("id",qiniuContent.getId());
         map.put("errno",0);
         map.put("data",new String[]{qiniuContent.getUrl()});

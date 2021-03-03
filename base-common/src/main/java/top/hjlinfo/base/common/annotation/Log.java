@@ -1,4 +1,4 @@
-package top.hjlinfo.base.admin.modules.logging.aop.log;
+package top.hjlinfo.base.common.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

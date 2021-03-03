@@ -1,4 +1,4 @@
-package top.hjlinfo.base.admin.modules.monitor.rest;
+package top.hjlinfo.base.admin.modules.monitor.controller;
 
 import top.hjlinfo.base.common.annotation.Limit;
 import org.springframework.web.bind.annotation.GetMapping;

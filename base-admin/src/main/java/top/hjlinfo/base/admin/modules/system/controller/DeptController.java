@@ -1,14 +1,13 @@
-package top.hjlinfo.base.admin.modules.system.rest;
+package top.hjlinfo.base.admin.modules.system.controller;
 
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import top.hjlinfo.base.admin.config.DataScope;
-import top.hjlinfo.base.admin.modules.logging.aop.log.Log;
+import top.hjlinfo.base.common.annotation.Log;
 import top.hjlinfo.base.admin.modules.system.domain.SysDept;
 import top.hjlinfo.base.admin.modules.system.service.DeptService;
 import top.hjlinfo.base.admin.modules.system.service.dto.DeptDTO;

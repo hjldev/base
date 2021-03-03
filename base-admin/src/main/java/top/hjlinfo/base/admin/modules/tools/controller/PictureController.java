@@ -1,13 +1,13 @@
-package top.hjlinfo.base.admin.modules.tools.rest;
+package top.hjlinfo.base.admin.modules.tools.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import top.hjlinfo.base.admin.modules.logging.aop.log.Log;
+import top.hjlinfo.base.common.annotation.Log;
 import top.hjlinfo.base.admin.modules.tools.domain.Picture;
 import top.hjlinfo.base.admin.modules.tools.service.PictureService;
 import top.hjlinfo.base.admin.modules.tools.service.dto.PictureQueryCriteria;
@@ -17,15 +17,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author 郑杰
+ * @author sting
  * @date 2018/09/20 14:13:32
  */
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/api")
 public class PictureController {
 
-    @Autowired
-    private PictureService pictureService;
+    private final PictureService pictureService;
+
 
     @Log("查询图片")
     @PreAuthorize("hasAnyRole('ADMIN','PICTURE_ALL','PICTURE_SELECT')")

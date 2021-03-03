@@ -1,9 +1,8 @@
-package top.hjlinfo.base.admin.modules.generator.rest;
+package top.hjlinfo.base.admin.modules.generator.controller;
 
 import lombok.RequiredArgsConstructor;
 import top.hjlinfo.base.admin.modules.generator.domain.GenConfig;
 import top.hjlinfo.base.admin.modules.generator.service.GenConfigService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;

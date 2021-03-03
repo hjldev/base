@@ -1,10 +1,9 @@
-package top.hjlinfo.base.admin.modules.monitor.rest;
+package top.hjlinfo.base.admin.modules.monitor.controller;
 
 import lombok.RequiredArgsConstructor;
-import top.hjlinfo.base.admin.modules.logging.aop.log.Log;
+import top.hjlinfo.base.common.annotation.Log;
 import top.hjlinfo.base.admin.modules.monitor.domain.vo.RedisVo;
 import top.hjlinfo.base.admin.modules.monitor.service.RedisService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

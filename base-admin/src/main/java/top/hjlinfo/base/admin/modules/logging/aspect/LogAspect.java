@@ -33,7 +33,7 @@ public class LogAspect {
     /**
      * 配置切入点
      */
-    @Pointcut("@annotation(top.hjlinfo.base.admin.modules.logging.aop.log.Log)")
+    @Pointcut("@annotation(top.hjlinfo.base.common.annotation.Log)")
     public void logPointcut() {
         // 该方法无方法体,主要为了让同类中其他方法使用此切入点
     }
@@ -45,7 +45,7 @@ public class LogAspect {
      */
     @Around("logPointcut()")
     public Object logAround(ProceedingJoinPoint joinPoint) throws Throwable {
-        Object result = null;
+        Object result;
         currentTime = System.currentTimeMillis();
         result = joinPoint.proceed();
         SysLog log = new SysLog("INFO",System.currentTimeMillis() - currentTime);

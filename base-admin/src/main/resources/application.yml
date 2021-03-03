@@ -24,6 +24,13 @@ spring:
     #连接超时时间
     timeout: 5000
 
+  swagger:
+    enable: true
+    application-name: ${spring.application.name}
+    application-version: 1.0
+    application-description: springfox swagger 3.0整合Demo
+    try-host: http://localhost:${server.port}
+
 mybatis-plus:
   mapper-locations: classpath*:/mapper/*/*.xml
   typeAliasesPackage: top.hjlinfo.base.admin.modules.*.domain
@@ -46,3 +53,4 @@ qiniu:
 #验证码有效时间/分钟
 code:
   expiration: 5
+

@@ -83,10 +83,9 @@
             <version>${log4jdbc.version}</version>
         </dependency>
 
-        <!-- RESTful APIs swagger2 -->
         <dependency>
             <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
+            <artifactId>springfox-boot-starter</artifactId>
             <version>${swagger.version}</version>
         </dependency>
 

@@ -1,6 +1,7 @@
-package top.hjlinfo.base.admin.modules.security.rest;
+package top.hjlinfo.base.admin.modules.security.controller;
 
 import cn.hutool.crypto.digest.DigestUtil;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -10,7 +11,7 @@ import org.springframework.security.authentication.AccountExpiredException;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import top.hjlinfo.base.admin.modules.logging.aop.log.Log;
+import top.hjlinfo.base.common.annotation.Log;
 import top.hjlinfo.base.admin.modules.security.domain.AuthenticationInfo;
 import top.hjlinfo.base.admin.modules.security.domain.AuthorizationUser;
 import top.hjlinfo.base.admin.modules.security.domain.JwtUser;
@@ -25,17 +26,16 @@ import top.hjlinfo.base.common.utils.SecurityUtil;
 @Slf4j
 @RestController
 @RequestMapping("auth")
+@RequiredArgsConstructor
 public class AuthenticationController {
 
     @Value("${jwt.header}")
     private String tokenHeader;
 
-    @Autowired
-    private JwtTokenUtil jwtTokenUtil;
+    private final JwtTokenUtil jwtTokenUtil;
 
-    @Autowired
     @Qualifier("jwtUserDetailsService")
-    private UserDetailsService userDetailsService;
+    private final UserDetailsService userDetailsService;
 
     /**
      * 登录授权
