@@ -7,7 +7,6 @@ import top.hjlinfo.base.common.exception.EntityNotFoundException;
 import top.hjlinfo.base.common.utils.ThrowableUtil;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -35,18 +34,7 @@ public class GlobalExceptionHandler {
         return buildResponseEntity(apiError);
     }
 
-    /**
-     * 处理 接口无权访问异常AccessDeniedException
-     * @param e
-     * @return
-     */
-    @ExceptionHandler(AccessDeniedException.class)
-    public ResponseEntity handleAccessDeniedException(AccessDeniedException e){
-        // 打印堆栈信息
-        log.error(ThrowableUtil.getStackTrace(e));
-        ApiError apiError = new ApiError(FORBIDDEN.value(),e.getMessage());
-        return buildResponseEntity(apiError);
-    }
+
 
     /**
      * 处理自定义异常
@@ -102,6 +90,9 @@ public class GlobalExceptionHandler {
         ApiError apiError = new ApiError(BAD_REQUEST.value(),msg.toString());
         return buildResponseEntity(apiError);
     }
+
+    // TODO 处理接口无权访问异常AccessDeniedException
+
 
     /**
      * 统一返回

@@ -3,7 +3,6 @@ package top.hjlinfo.base.admin.modules.security.controller;
 import cn.hutool.crypto.digest.DigestUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +15,7 @@ import top.hjlinfo.base.admin.modules.security.domain.AuthenticationInfo;
 import top.hjlinfo.base.admin.modules.security.domain.AuthorizationUser;
 import top.hjlinfo.base.admin.modules.security.domain.JwtUser;
 import top.hjlinfo.base.admin.modules.security.utils.JwtTokenUtil;
-import top.hjlinfo.base.common.utils.SecurityUtil;
+import top.hjlinfo.base.admin.modules.security.utils.SecurityUtil;
 
 /**
  * @author sting

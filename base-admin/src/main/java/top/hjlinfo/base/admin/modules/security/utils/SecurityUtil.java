@@ -1,6 +1,7 @@
-package top.hjlinfo.base.common.utils;
+package top.hjlinfo.base.admin.modules.security.utils;
 
 import cn.hutool.json.JSONObject;
+import org.springframework.security.core.context.SecurityContextHolder;
 import top.hjlinfo.base.common.exception.BadRequestException;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,7 +16,7 @@ public class SecurityUtil {
     public static UserDetails getUserDetails() {
         UserDetails userDetails = null;
         try {
-            userDetails = (UserDetails) org.springframework.security.core.context.SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         } catch (Exception e) {
             throw new BadRequestException(HttpStatus.UNAUTHORIZED, "登录状态过期");
         }

@@ -4,7 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import top.hjlinfo.base.admin.modules.logging.domain.SysLog;
 import top.hjlinfo.base.admin.modules.logging.service.LogService;
 import top.hjlinfo.base.common.utils.RequestHolder;
-import top.hjlinfo.base.common.utils.SecurityUtil;
+import top.hjlinfo.base.admin.modules.security.utils.SecurityUtil;
 import top.hjlinfo.base.common.utils.StringUtil;
 import top.hjlinfo.base.common.utils.ThrowableUtil;
 import org.aspectj.lang.JoinPoint;

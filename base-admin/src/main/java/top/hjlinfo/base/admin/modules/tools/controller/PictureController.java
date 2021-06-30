@@ -11,7 +11,7 @@ import top.hjlinfo.base.common.annotation.Log;
 import top.hjlinfo.base.admin.modules.tools.domain.Picture;
 import top.hjlinfo.base.admin.modules.tools.service.PictureService;
 import top.hjlinfo.base.admin.modules.tools.service.dto.PictureQueryCriteria;
-import top.hjlinfo.base.common.utils.SecurityUtil;
+import top.hjlinfo.base.admin.modules.security.utils.SecurityUtil;
 
 import java.util.HashMap;
 import java.util.Map;

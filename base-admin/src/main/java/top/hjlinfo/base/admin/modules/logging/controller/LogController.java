@@ -3,7 +3,7 @@ package top.hjlinfo.base.admin.modules.logging.controller;
 import lombok.RequiredArgsConstructor;
 import top.hjlinfo.base.admin.modules.logging.service.LogService;
 import top.hjlinfo.base.admin.modules.logging.service.dto.LogQueryCriteria;
-import top.hjlinfo.base.common.utils.SecurityUtil;
+import top.hjlinfo.base.admin.modules.security.utils.SecurityUtil;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

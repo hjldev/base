@@ -24,7 +24,7 @@ import top.hjlinfo.base.admin.modules.tools.domain.Picture;
 import top.hjlinfo.base.admin.modules.tools.service.PictureService;
 import top.hjlinfo.base.common.exception.BadRequestException;
 import top.hjlinfo.base.common.utils.PageUtil;
-import top.hjlinfo.base.common.utils.SecurityUtil;
+import top.hjlinfo.base.admin.modules.security.utils.SecurityUtil;
 
 import java.util.*;
 import java.util.stream.Collectors;

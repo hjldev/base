@@ -12,7 +12,7 @@ import top.hjlinfo.base.admin.modules.system.service.UserService;
 import top.hjlinfo.base.admin.modules.system.service.dto.MenuDTO;
 import top.hjlinfo.base.admin.modules.system.service.dto.UserDTO;
 import top.hjlinfo.base.admin.modules.system.service.mapper.MenuMapper;
-import top.hjlinfo.base.common.utils.SecurityUtil;
+import top.hjlinfo.base.admin.modules.security.utils.SecurityUtil;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;

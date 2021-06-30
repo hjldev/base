@@ -6,7 +6,7 @@ import top.hjlinfo.base.admin.modules.system.service.RoleService;
 import top.hjlinfo.base.admin.modules.system.service.UserService;
 import top.hjlinfo.base.admin.modules.system.service.dto.RoleSmallDTO;
 import top.hjlinfo.base.admin.modules.system.service.dto.UserDTO;
-import top.hjlinfo.base.common.utils.SecurityUtil;
+import top.hjlinfo.base.admin.modules.security.utils.SecurityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

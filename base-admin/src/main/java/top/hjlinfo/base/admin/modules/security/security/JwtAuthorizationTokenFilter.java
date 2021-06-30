@@ -1,9 +1,9 @@
 package top.hjlinfo.base.admin.modules.security.security;
 
-import io.jsonwebtoken.ExpiredJwtException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 import top.hjlinfo.base.admin.modules.security.domain.JwtUser;
 import top.hjlinfo.base.admin.modules.security.utils.JwtTokenUtil;
+import top.hjlinfo.base.common.exception.BadRequestException;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -44,8 +45,9 @@ public class JwtAuthorizationTokenFilter extends OncePerRequestFilter {
             authToken = requestHeader.substring(7);
             try {
                 username = jwtTokenUtil.getUsernameFromToken(authToken);
-            } catch (ExpiredJwtException e) {
+            } catch (Exception e) {
                 log.error(e.getMessage());
+                throw new BadRequestException(HttpStatus.UNAUTHORIZED, "登录状态过期");
             }
         }
 
@@ -53,7 +55,7 @@ public class JwtAuthorizationTokenFilter extends OncePerRequestFilter {
 
             // It is not compelling necessary to load the use details from the database. You could also store the information
             // in the token and read it from it. It's up to you ;)
-            JwtUser userDetails = (JwtUser)this.userDetailsService.loadUserByUsername(username);
+            JwtUser userDetails = (JwtUser) this.userDetailsService.loadUserByUsername(username);
 
             // For simple validation it is completely sufficient to just check the token integrity. You don't have to call
             // the database compellingly. Again it's up to you ;)

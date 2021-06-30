@@ -16,7 +16,7 @@ import top.hjlinfo.base.admin.modules.system.service.RoleService;
 import top.hjlinfo.base.admin.modules.system.service.dto.CommonQueryCriteria;
 import top.hjlinfo.base.admin.modules.system.service.dto.RoleSmallDTO;
 import top.hjlinfo.base.common.exception.BadRequestException;
-import top.hjlinfo.base.common.utils.SecurityUtil;
+import top.hjlinfo.base.admin.modules.security.utils.SecurityUtil;
 
 import java.util.Collections;
 import java.util.List;
