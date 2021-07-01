@@ -3,7 +3,6 @@ package top.hjlinfo.base.admin.modules.security.security;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -12,7 +11,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 import top.hjlinfo.base.admin.modules.security.domain.JwtUser;
 import top.hjlinfo.base.admin.modules.security.utils.JwtTokenUtil;
-import top.hjlinfo.base.common.exception.BadRequestException;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -47,7 +45,6 @@ public class JwtAuthorizationTokenFilter extends OncePerRequestFilter {
                 username = jwtTokenUtil.getUsernameFromToken(authToken);
             } catch (Exception e) {
                 log.error(e.getMessage());
-                throw new BadRequestException(HttpStatus.UNAUTHORIZED, "登录状态过期");
             }
         }
 

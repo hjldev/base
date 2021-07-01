@@ -1,5 +1,7 @@
 package top.hjlinfo.base.admin.modules.security.config;
 
+import lombok.RequiredArgsConstructor;
+import top.hjlinfo.base.admin.modules.security.security.JwtAccessDeniedHandler;
 import top.hjlinfo.base.admin.modules.security.security.JwtAuthenticationEntryPoint;
 import top.hjlinfo.base.admin.modules.security.security.JwtAuthorizationTokenFilter;
 import top.hjlinfo.base.admin.modules.security.service.JwtUserDetailsService;
@@ -20,22 +22,22 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+@RequiredArgsConstructor
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private JwtAuthenticationEntryPoint unauthorizedHandler;
+    private final JwtAuthenticationEntryPoint unauthorizedHandler;
 
-    @Autowired
-    private JwtUserDetailsService jwtUserDetailsService;
+    private final JwtUserDetailsService jwtUserDetailsService;
 
     /**
      * 自定义基于JWT的安全过滤器
      */
-    @Autowired
-    JwtAuthorizationTokenFilter authenticationTokenFilter;
+    private final JwtAuthorizationTokenFilter authenticationTokenFilter;
+
+    private final JwtAccessDeniedHandler jwtAccessDeniedHandler;
 
     @Value("${jwt.header}")
     private String tokenHeader;
@@ -76,7 +78,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
 
                 // 授权异常
-                .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
+                .exceptionHandling()
+                .authenticationEntryPoint(unauthorizedHandler)
+                .accessDeniedHandler(jwtAccessDeniedHandler)
+                .and()
 
                 // 不创建会话
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
