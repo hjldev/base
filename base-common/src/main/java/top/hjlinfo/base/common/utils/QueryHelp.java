@@ -6,9 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import top.hjlinfo.base.common.annotation.Query;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author sting
@@ -55,7 +53,19 @@ public class QueryHelp {
                             wrapper.likeRight(attributeName, val);
                             break;
                         case IN:
-                            wrapper.in(attributeName, val);
+                            if (val instanceof Set) {
+                                StringBuilder sb = new StringBuilder();
+                                Iterator<Long> it = ((Set<Long>) val).iterator();
+                                while (it.hasNext()) {
+                                    Long l = it.next();
+                                    sb.append(l);
+                                    sb.append(",");
+                                }
+                                String s = sb.substring(0, sb.length() - 1);
+                                wrapper.in(attributeName, s);
+                            } else {
+                                wrapper.in(attributeName, val);
+                            }
                             break;
                     }
                 }
