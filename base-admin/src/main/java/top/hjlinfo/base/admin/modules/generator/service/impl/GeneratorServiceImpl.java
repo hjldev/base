@@ -60,7 +60,7 @@ public class GeneratorServiceImpl implements GeneratorService {
 
         List<ColumnInfo> columnInfos = new ArrayList<>();
         for (Map<String, Object> column : columns) {
-            columnInfos.add(new ColumnInfo(column.get("column_name"),column.get("is_nullable"),column.get("data_type"),column.get("column_comment"),column.get("column_key"),column.get("extra"),null,"true"));
+            columnInfos.add(new ColumnInfo(column.get("COLUMN_NAME"),column.get("IS_NULLABLE"),column.get("DATA_TYPE"),column.get("COLUMN_COMMENT"),column.get("COLUMN_KEY"),column.get("EXTRA"),null,"true"));
         }
         return PageUtil.toPage(columnInfos,columnInfos.size());
     }
