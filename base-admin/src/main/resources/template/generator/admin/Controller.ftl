@@ -1,6 +1,6 @@
 package ${package}.rest;
 
-import top.hjlinfo.base.admin.modules.logging.aop.log.Log;
+import top.hjlinfo.base.common.annotation.Log;
 import lombok.RequiredArgsConstructor;
 import ${package}.domain.${className};
 import ${package}.service.${className}Service;

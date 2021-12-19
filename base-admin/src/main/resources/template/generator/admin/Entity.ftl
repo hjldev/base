@@ -1,7 +1,6 @@
 package ${package}.domain;
 
 import lombok.Data;
-import javax.persistence.*;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
