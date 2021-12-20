@@ -60,7 +60,7 @@ public class ${className}ServiceImpl implements ${className}Service {
     }
 
     @Override
-    public ${className}DTO findById(Long Id) {
+    public ${className}DTO findById(${pkColumnType} Id) {
         ${className} ${changeClassName} = ${changeClassName}Dao.selectById(Id);
         return ${changeClassName}Mapper.toDto(${changeClassName});
     }
