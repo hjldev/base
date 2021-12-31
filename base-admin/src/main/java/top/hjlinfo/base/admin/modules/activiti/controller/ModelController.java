@@ -31,7 +31,7 @@ import java.util.Map;
  * @date 2018/9/25
  */
 @RestController
-@RequestMapping("/model")
+@RequestMapping("/act/model")
 @AllArgsConstructor
 public class ModelController {
 	private final ModelService modelService;

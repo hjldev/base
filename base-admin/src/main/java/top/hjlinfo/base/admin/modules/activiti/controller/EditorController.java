@@ -26,7 +26,7 @@ import top.hjlinfo.base.admin.modules.activiti.service.EditorService;
  * @date 2018/9/25
  */
 @RestController
-@RequestMapping("/service")
+@RequestMapping("/act/service")
 @AllArgsConstructor
 public class EditorController {
 	private final EditorService editorService;

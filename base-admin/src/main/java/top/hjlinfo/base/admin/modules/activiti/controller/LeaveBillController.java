@@ -36,7 +36,7 @@ import top.hjlinfo.base.admin.modules.activiti.utils.R;
  */
 @RestController
 @AllArgsConstructor
-@RequestMapping("/leave-bill")
+@RequestMapping("/act/leave-bill")
 public class LeaveBillController {
 	private final LeaveBillService leaveBillService;
 	private final ProcessService processService;

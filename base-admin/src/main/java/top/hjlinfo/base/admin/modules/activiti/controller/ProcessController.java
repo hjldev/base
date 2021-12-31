@@ -37,7 +37,7 @@ import java.util.Map;
  */
 @RestController
 @AllArgsConstructor
-@RequestMapping("/process")
+@RequestMapping("/act/process")
 public class ProcessController {
 	private final ProcessService processService;
 
