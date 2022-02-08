@@ -30,6 +30,8 @@ spring:
     application-version: 1.0
     application-description: springfox swagger 3.0整合Demo
     try-host: http://localhost:${server.port}
+  mvc:
+    static-path-pattern: classpath:/static/**
 
 mybatis-plus:
   mapper-locations: classpath*:/mapper/*/*.xml

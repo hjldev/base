@@ -4,8 +4,8 @@ spring:
     type: com.zaxxer.hikari.HikariDataSource
     driverClassName: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
     url: jdbc:log4jdbc:mysql://127.0.0.1:3306/base?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false
-    username: root
-    password: 123456
+    username: base
+    password: wkyZjjRYfHmGWdy3
 
 #jwt
 jwt:

@@ -1,6 +1,7 @@
 package top.hjlinfo.base.admin.modules.security.config;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import top.hjlinfo.base.admin.modules.security.security.JwtAccessDeniedHandler;
 import top.hjlinfo.base.admin.modules.security.security.JwtAuthenticationEntryPoint;
 import top.hjlinfo.base.admin.modules.security.security.JwtAuthorizationTokenFilter;
@@ -112,6 +113,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/test/**").anonymous()
                 .antMatchers("/act/process/resource/**").anonymous()
                 .antMatchers("/act/task/view/**").anonymous()
+                .antMatchers("/act/service/**").anonymous()
                 .antMatchers(HttpMethod.OPTIONS, "/**").anonymous()
 
                 .antMatchers("/druid/**").anonymous()
@@ -122,5 +124,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         httpSecurity
                 .addFilterBefore(authenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
+    }
+
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring().antMatchers("/static/**");
     }
 }
